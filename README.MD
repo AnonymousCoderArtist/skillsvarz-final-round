@@ -1,5 +1,5 @@
 
-![ByteCoder/Artist Header Image](Slide%2016_9%20-%2013.png)
+![ByteCoder/Artist Header Image](https://github.com/AnonymousCoderArtist/skillsvarz-final-round/blob/main/Slide%2016_9%20-%2021.png)
 
 # ByteCoder/Artist
 
