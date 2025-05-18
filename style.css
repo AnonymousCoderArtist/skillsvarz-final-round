@@ -1,0 +1,1157 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'PP Neue Montreal', sans-serif;
+    color: #1a1a1a;
+    background-color: #e3e3db;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-size: 60px;
+    font-weight: 500;
+}
+
+p {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+
+section {
+    width: 100%;
+    height: 100svh;
+    padding: 2.5em;
+    position: relative; /* Needed for z-index stacking */
+    z-index: 1; /* Ensure sections are above the tunnel canvas */
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 4em;
+}
+
+.hero h1 {
+    position: relative;
+    top: 0.5em;
+    left: -0.05em;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 10vw;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+
+.hero-copy {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    bottom: 0;
+}
+
+.outro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e3e3db; /* THEME - same as body */
+    color: #1a1a1a; /* THEME */
+}
+
+.outro h1 {
+  font-family: "Bebas Neue", sans-serif; /* THEME */
+  font-size: 5vw;
+  font-weight: lighter;
+  text-transform: uppercase;
+}
+
+
+.intro {
+    height: 100%;
+}
+
+.video-container-desktop {
+    position: relative;
+    transform: translateY(600%) scale(0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    top: 0.5em;
+    will-change: transform;
+}
+
+.video-container-mobile {
+    display: none;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.video-preview {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 1.5rem;
+    background-color: #b9b9b3;
+    overflow: hidden;
+}
+
+.video-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5rem;
+    overflow: hidden;
+}
+
+iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5rem;
+    pointer-events: none;
+}
+
+.video-container-desktop .video-title p {
+    position: relative;
+    font-size: 78px;
+    font-weight: 500;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    font-family: "Bebas Neue", sans-serif;
+    font: 7rem;
+    overflow-y: hidden;
+    font-weight: 400;
+    font-style: normal;
+    transform: translate(5%, 0%);
+    /* mix-blend-mode: difference; */
+    z-index: 1001;
+}
+
+.menu-toggle{
+    cursor: pointer;
+}
+
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.menu-container {
+    position: fixed;
+    top: 50%;
+    left: -50%;
+    transform: translateY(-50%);
+    padding: 1.5em;
+    width: 45%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1003;
+    transition: left 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.menu-container.is-open {
+    left: 0%;
+}
+
+
+.menu {
+    width: 100%;
+    height: 100%;
+    background-color: #1a1a1a;
+    color: #e3e3db;
+    border-radius: 20px;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    overflow: hidden;
+}
+
+.menu-main {
+    flex: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+.menu-sidebar {
+    flex: 0.2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu-top {
+    display: flex;
+    flex: 1;
+}
+
+.menu-bottom {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.menu-top-title {
+    flex: 1;
+    padding: 2em;
+}
+
+.menu-top-content {
+    padding: 1.25em 0;
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-item {
+    position: relative;
+    left: -100px;
+    padding: 0.5em 0;
+    transition: left 0.3s ease;
+}
+
+.menu-item-link {
+    position: relative;
+}
+
+.menu-item-link a {
+    position: relative;
+    text-decoration: none;
+    color: #fff;
+    font-size: 48px;
+    padding-left: 10px;
+    z-index: 2;
+    display: inline-block;
+}
+
+.menu-item#active .menu-item-link a {
+    color: #000;
+}
+
+.menu-item:hover .menu-item-link a {
+    color: #000;
+}
+
+
+.bg-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: #fff;
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 95% 100%, 0 100%, 0% 50%);
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.menu-item:hover .bg-hover {
+   opacity: 1;
+}
+
+.menu-item#active .bg-hover {
+    background-color: #ebebe2;
+    opacity: 1;
+}
+
+.menu-item span {
+    position: absolute;
+    RIGHT: 0px;
+    bottom: 0px;
+    padding: 1.5em 1em; /* Adjust if "Page 00X" alignment is off */
+    color: #aaa; /* Default color for page numbers */
+    transition: color 0.3s ease;
+}
+
+/* Overall hover/active color for the span text itself */
+.menu-item:hover span,
+.menu-item#active span {
+    color: #fff;
+}
+
+/* Default color for characters within the span (pre-shuffle, pre-char-active) */
+.menu-item span .word .char {
+    color: #aaa; /* Matches the span's default color */
+    transition: color 0.1s linear; /* Smooth color transition for chars */
+}
+
+/* Color of span characters when their parent .menu-item is hovered or active (during shuffle) */
+.menu-item:hover span .word .char,
+.menu-item#active span .word .char {
+    color: #fff;
+}
+
+/* Color of span characters that get 'char-active' class (e.g., via colorChars JS function)
+   This is from your original CSS. It applies when .menu-item is hovered AND char has .char-active */
+.menu-item:hover span .word .char.char-active {
+   color: #fff; /* Or a more distinct color if you want to differentiate it */
+}
+
+
+@keyframes hoverEffect {
+    0% {
+        width: 0%;
+        left: 0;
+    }
+    50% {
+        width: 100%;
+        left: 0;
+    }
+    51% {
+        left: auto;
+        right: 0;
+        width: 100%;
+    }
+    100% {
+        left: auto;
+        right: 0;
+        width: 0%;
+    }
+}
+
+.menu-sub-item {
+    width: 100%;
+    display: flex;
+    gap: 1em;
+    border-top: 1px solid rgba(255, 255, 255, 0.125);
+    padding: 1em 2em;
+}
+
+.menu-title {
+    flex: 1;
+}
+
+.menu-content {
+    flex: 4;
+    padding-left: 2em;
+}
+
+.menu-content p {
+    position: relative;
+    width: max-content;
+    padding: 0.125em;
+}
+
+.menu-content p::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: #fff;
+    mix-blend-mode: difference;
+}
+
+.menu-content p:hover::after {
+    animation: hoverEffect 0.7s ease forwards;
+}
+
+
+.close-btn, .logo {
+    padding: 1.5em;
+}
+
+.close-btn {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.125);
+    cursor: pointer;
+}
+
+
+#string{
+    height: 300px;
+    top: 7rem;
+    width: 100%;
+    position: relative;
+}
+
+#string svg{
+  width: 100%;
+}
+
+
+img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+/* --- Start of NEW Team Section CSS --- */
+section.team {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh; /* Use min-height to accommodate wrapping images on mobile */
+    color: #1a1a1a; /* Light text color from your theme */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    overflow: hidden;
+    font-family: "Bebas Neue", sans-serif; /* Match existing website font */
+    z-index: 1; /* Ensure it's above the tunnel canvas */
+}
+
+.profile-images {
+    width: max-content; /* Allow container to shrink to content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    padding: 5px;
+    cursor: pointer;
+    will-change: width, height;
+}
+
+.profile-names {
+    width: 100%;
+    height: 20rem; /* Keep height consistent with reference */
+    position: relative;
+    overflow: hidden;
+}
+
+.name h1 {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 17rem; /* Match your original font size */
+    font-weight: 800; /* Match your original font weight */
+    letter-spacing: -0rem; /* Match your original letter spacing */
+    line-height: 1;
+    color: #1a1a1a; /* Default color for names (light) */
+    user-select: none;
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Center vertically */
+}
+
+.name.default h1 {
+    color: #b62323; /* Your website's specific red color for "The Squad" */
+}
+
+/* This .letter class is used by SplitText */
+.letter {
+    position: relative;
+    display: inline-block;
+    will-change: transform, opacity; /* Added opacity for alpha tweens */
+}
+/* --- End of NEW Team Section CSS --- */
+
+
+/* Styles for the #scroll-container (for tunnel animation) */
+/* This element itself doesn't need visual styles, its height drives the scroll */
+#scroll-container {
+  width: 100vw;
+  height: 300vh; /* Controls scroll duration of tunnel intro. Adjust as needed. */
+  pointer-events: none; /* Allow clicks to pass through to elements behind it */
+  position: relative;
+  /* background: #000; */
+  z-index: 0; /* Keep it between content sections */
+}
+
+/* Canvas for tunnel is styled via JS (fixed, z-index: -1), BUT add initial opacity here */
+#tunnel-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Behind all other content */
+    pointer-events: none; /* Allow clicks to pass through */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.5s ease-out;
+    background-color: #000; /* Smooth transition for visibility */
+}
+
+
+section.work { /* .work section needs z-index >= 1 to stack above fixed canvas */
+  position: relative;
+  z-index: 1;
+  background-color: #000; /* Black background for this section */
+  overflow: hidden;
+}
+
+/* Canvases within .work section */
+canvas#grid-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+canvas#letters-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.text-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  pointer-events: none;
+  perspective: 2500px;
+  perspective-origin: center;
+}
+
+.text-container .letter { /* This is the .letter class specifically for the work section text */
+  position: absolute;
+  font-size: 8rem; /* SIGNIFICANTLY REDUCED from 14rem. Adjust as needed. */
+  font-weight: bold;
+  color: #e3e3db;
+  z-index: 2;
+  transform-origin: center;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.cards {
+  position: relative;
+  width: 500vw;
+  height: 100vh;
+  padding-left: 100vw;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap:2rem;
+  z-index: 10;
+}
+
+.card {
+  width: 18%;
+  height: 50%;
+  padding: 8px;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-img {
+  flex: 1;
+  overflow: hidden;
+}
+
+.card-copy {
+  min-height: 20px; /* Adjusted height for Bebas Neue */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4px;
+  text-transform: uppercase;
+  font-family: "Bebas Neue", sans-serif; /* THEME */
+  font-size: 12px;
+  color: #e3e3db; /* THEME: Light text on black card background */
+}
+
+/* --- Start of NEW Skills Section CSS --- */
+.skills-section {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #e3e3db; /* Theme background */
+    color: #1a1a1a; /* Theme text color */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0; /* Override default section padding for full-width marquee */
+    position: relative;
+    z-index: 1; /* Ensure it's above tunnel canvas if active */
+    overflow-x: hidden; /* Prevent horizontal scroll from marquee */
+}
+
+/* Marquee Container */
+.marquee-container {
+    width: 100%;
+    background-color: #1a1a1a; /* Black background for marquee */
+    color: #e3e3db; /* Light text for marquee */
+    padding: 1em 0;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-bottom: 3em; /* Space between marquee and skills */
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+.marquee-track {
+    display: inline-block; /* Changed from block to inline-block */
+    padding-left: 100%; /* Start the track off-screen to the right for leftward scroll */
+    animation: marquee-animation 25s linear infinite; /* Adjust duration as needed */
+    will-change: transform;
+}
+
+.marquee-track span {
+    font-family: "Bebas Neue", sans-serif; /* Theme font */
+    font-size: 4vw; /* Adjust size */
+    text-transform: uppercase;
+    padding: 0 1.5em; /* Space between repeated texts */
+    font-weight: bold; /* Make it bold like the image */
+    display: inline-block; /* Ensure spans are on the same line */
+}
+
+@keyframes marquee-animation {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%); /* Animate one full track width */
+    }
+}
+/* Note: For the CSS marquee to loop seamlessly, the content within .marquee-track 
+   (all spans combined) should appear to be continuous when the animation repeats.
+   The current setup with 4 spans and translateX(-100%) should provide a continuous scroll.
+   If "LANGUAGES WE CODE" is short, you might need more spans or a longer animation duration.
+*/
+
+
+/* Skills Content Area */
+.skills-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; /* Takes remaining space */
+    width: 100%;
+    padding: 2em; /* Padding for the content area below marquee */
+    box-sizing: border-box;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5em; /* Gap between pills */
+    max-width: 900px; /* Or desired max width */
+    padding: 1em;
+}
+
+.skill-pill {
+    font-family: "Bebas Neue", sans-serif; /* Theme font */
+    font-size: 1.6rem; /* Adjusted size */
+    color: #1a1a1a; /* Theme text color */
+    background-color: transparent;
+    border: 2px solid #1a1a1a; /* Theme border color */
+    padding: 0.6em 1.8em; /* Adjusted padding */
+    border-radius: 50px; /* Rounded corners */
+    text-transform: uppercase;
+    font-weight: normal; /* Bebas Neue is often bold enough */
+    /* Initial state for GSAP animation */
+    filter: blur(8px);
+    opacity: 0;
+    transform: translateY(20px); /* Optional: slight upward movement on reveal */
+    will-change: filter, opacity, transform;
+}
+
+/* --- Start of NEW Review Section CSS --- */
+section.reviews {
+    position: relative; /* For absolute positioning of children */
+    width: 100vw;
+    height: 100vh; /* Will be pinned, so 100vh is fine */
+    background-color: #e3e3db; /* THEME: Light background */
+    overflow: hidden; /* Prevent content from spilling out during scroll */
+    z-index: 1; /* Stacking context */
+}
+
+section.reviews .bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Behind canvas layers */
+}
+
+section.reviews .bg-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3; /* Make background image subtle */
+}
+
+section.reviews canvas.outline-layer,
+section.reviews canvas.fill-layer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center canvas */
+    width: 150%; /* Overdraw for smoother edge animations */
+    height: 150%;
+    pointer-events: none; /* Canvases should not interfere with mouse events */
+}
+
+section.reviews canvas.outline-layer {
+    z-index: 2; /* Above background image */
+}
+
+section.reviews canvas.fill-layer {
+    z-index: 4; /* Above cards, to reveal/hide them */
+}
+
+.review-cards-container {
+    position: absolute;
+    top: 0;
+    left: 0; /* Will be animated by GSAP */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-left: 100vw; /* Start cards off-screen to the right */
+    /* Total width will be sum of cards. Let's assume 4 cards.
+       Each card ~25% viewport width + gap. So container approx 100vw + 3*gap.
+       GSAP will handle precise positioning based on scrollWidth.
+    */
+    z-index: 3; /* Between outline and fill canvas layers */
+    will-change: transform; /* Optimize for GSAP animation */
+}
+
+.review-card {
+    width: 22vw; /* Adjust card width as needed */
+    height: 50vh; /* Adjust card height */
+    min-width: 280px; /* Minimum width for smaller screens */
+    background-color: #1a1a1a; /* THEME: Dark card background */
+    color: #e3e3db; /* THEME: Light text on dark card */
+    border-radius: 15px;
+    padding: 2em;
+    margin-right: 3vw; /* Gap between cards */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0; /* Prevent cards from shrinking */
+}
+
+.review-card h3 {
+    font-family: "Bebas Neue", sans-serif; /* THEME */
+    font-size: 2rem;
+    color: #fff8f8; /* Accent color for reviewer name - adjust if needed */
+    margin-bottom: 0.5em;
+    font-weight: 400;
+}
+
+.review-card p {
+    font-family: 'PP Neue Montreal', sans-serif; /* THEME */
+    font-size: 0.9rem;
+    line-height: 1.6;
+    font-weight: 400; /* Lighter weight for review text */
+}
+
+/* --- Start of NEW Footer Section CSS (adapted from reference) --- */
+.footer {
+  color: #e3e3db;
+  background-color: #1a1a1a; /* THEME: Dark text (warm-off-black) */
+  padding: 8rem 2.5em; /* Match section padding */
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1; /* Ensure it's above other elements if needed */
+  font-family: 'PP Neue Montreal', sans-serif; /* THEME */
+  letter-spacing: -0.03em;
+}
+
+.footer-content {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-header {
+  margin-bottom: 6rem; /* Adjusted margin */
+}
+
+.footer-header h2 {
+  font-size: 4vw; /* Responsive font size */
+  line-height: 1.1;
+  text-transform: none; /* As per reference */
+  font-family: 'PP Neue Montreal', sans-serif;
+}
+
+.footer-header .light-text {
+  display: block;
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.footer-header .bold-text {
+  display: block;
+  font-weight: 700;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem; /* Adjusted gap */
+  margin-bottom: 8rem; /* Adjusted margin */
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem; /* Adjusted gap */
+}
+
+.footer-section h3 {
+  font-family: "Bebas Neue", sans-serif; /* THEME */
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  opacity: 0.6;
+  font-weight: 400;
+  text-transform: uppercase; /* Make section titles uppercase */
+}
+
+.footer-section p {
+  font-family: 'PP Neue Montreal', sans-serif; /* THEME */
+  font-size: 1.1rem; /* Adjusted size */
+  margin-bottom: 0.5rem;
+  text-transform: none;
+  font-weight: 500;
+}
+
+.footer-section a {
+  color: #b9b9b3; /* THEME */
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.footer-section a:hover {
+  opacity: 0.7;
+}
+
+.footer-logo {
+  width: 100%;
+  margin-top: 4rem;
+  opacity: 1;
+}
+
+.footer-logo svg {
+  width: 200px; /* Adjust size as needed */
+  height: auto;
+  display: block; /* For margin auto to work if centered */
+  margin: 0 auto; /* Center the logo if desired */
+}
+
+.footer-logo .logo-path {
+  clip-path: inset(100% 0 0 0); /* Initially hidden from bottom for GSAP animation */
+  opacity: 1; /* Ensure it's visible when clip-path is animated */
+}
+
+
+/* Responsive for Footer */
+@media (max-width: 900px) {
+  .footer {
+    padding: 6rem 1.5em;
+  }
+  .footer-header h2 {
+    font-size: 6vw;
+  }
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 6rem;
+  }
+  .footer-section p {
+    font-size: 1rem;
+  }
+  .footer-logo svg {
+    width: 150px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-header h2 {
+    font-size: 7vw;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr; /* Single column on very small screens */
+    gap: 3rem;
+  }
+  .footer-column {
+    gap: 2.5rem;
+  }
+  .footer-logo svg {
+    width: 120px;
+  }
+}
+/* --- End of NEW Footer Section CSS --- */
+
+/* Ensure work section background is black for the grid dots */
+section.work {
+  background-color: #000;
+}
+
+/* Ensure skills pills have initial state for GSAP animation */
+.skill-pill {
+    filter: blur(8px);
+    opacity: 0;
+    transform: translateY(20px);
+    will-change: filter, opacity, transform;
+}
+
+
+/* Add/Modify these rules within your <style> block or style.css file */
+
+.footer-logo {
+  width: 100%;
+  margin-top: 4rem;
+  /* Remove opacity: 1; let the text handle its own animation */
+  /* opacity: 1; */ /* REMOVE OR COMMENT OUT THIS LINE */
+
+  /* Add flexbox to center the text */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically (if needed) */
+  min-height: 50px; /* Ensure it has some height even if text is hidden */
+}
+
+/* REMOVE or COMMENT OUT the rules for .footer-logo svg and .footer-logo .logo-path */
+/*
+.footer-logo svg {
+  width: 200px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.footer-logo .logo-path {
+  clip-path: inset(100% 0 0 0);
+  opacity: 1;
+}
+*/
+
+/* Add styles for the new large text element */
+.footer-large-text {
+    font-family: "Bebas Neue", sans-serif; /* Use your theme's large text font */
+    font-size: 20vw; /* Make it large and responsive */
+    font-weight: 400; /* Match Bebas Neue weight */
+    text-transform: uppercase;
+    color: #e3e3db; /* Use your theme's light text color */
+    line-height: 1; /* Adjust line height if necessary */
+    letter-spacing: -0.02em; /* Adjust letter spacing */
+
+    /* Initially hide the text */
+    opacity: 1; /* Start invisible */
+    /* GSAP will handle the initial Y position for the animation */
+}
+
+/* Add a style for the SplitText generated characters */
+.footer-large-text .char {
+    display: inline-block; /* Important for Y translation */
+}
+
+/* Responsive for Footer (Adjust font size for .footer-large-text) */
+@media (max-width: 900px) {
+    /* ... other footer responsive rules ... */
+    .footer-large-text {
+        font-size: 12vw; /* Larger font size on smaller screens */
+    }
+    /* ... other footer responsive rules ... */
+}
+
+@media (max-width: 600px) {
+    /* ... other footer responsive rules ... */
+     .footer-large-text {
+        font-size: 15vw; /* Even larger font size on very small screens */
+    }
+    /* ... other footer responsive rules ... */
+}
+
+
+/* Responsive adjustments for review cards if needed */
+@media (max-width: 900px) {
+    .review-card {
+        width: 60vw; /* Wider cards on mobile */
+        height: 45vh;
+        padding: 1.5em;
+        margin-right: 5vw;
+    }
+    .review-card h3 {
+        font-size: 1.8rem;
+    }
+    .review-card p {
+        font-size: 0.8rem;
+    }
+    .review-cards-container {
+        padding-left: 80vw; /* Adjust starting position for mobile */
+    }
+}
+@media (max-width: 900px) {
+    .marquee-track span {
+        font-size: 7vw; /* Larger on mobile for impact */
+        padding: 0 1em;
+    }
+    .marquee-container {
+        padding: 0.8em 0;
+        margin-bottom: 2em;
+    }
+    .skill-pill {
+        font-size: 1.3rem; /* Slightly smaller for mobile */
+        padding: 0.5em 1.3em;
+    }
+    .skills-grid {
+        gap: 1em;
+        padding: 0.5em;
+    }
+
+    nav, section {
+        padding: 1.5em;
+    }
+
+    .hero {
+        justify-content: flex-end;
+        gap: 2em;
+    }
+
+    .hero h1 {
+        font-size: 19vw;
+    }
+
+    .video-container-desktop {
+        display: none;
+    }
+
+    .video-container-mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+    }
+
+    .menu-container {
+        left: -100%;
+        width: 100%;
+        top: 0;
+        transform: none;
+        padding: 0;
+    }
+    .menu-container.is-open {
+         left: 0%;
+         top: 0;
+         transform: none;
+    }
+    .menu {
+        border-radius: 0;
+        height: 100vh;
+    }
+    .menu-top-content {
+        padding: 1.5em;
+    }
+    .menu-top-title, .menu-item span, .menu-title {
+        display: none;
+    }
+    .menu-item-link a {
+        font-size: 32px;
+        letter-spacing: -1px;
+        padding-left: 0;
+    }
+    .menu-item {
+         left: -100px;
+         transition: left 0.3s ease;
+         padding: 0.75em 0;
+    }
+    .menu-container.is-open .menu-item {
+        left: 0px;
+    }
+
+    /* --- Start of NEW Team Section Mobile CSS --- */
+    section.team {
+        flex-direction: column-reverse;
+        gap: 1.5rem;
+        /* Ensure min-height works correctly with padding/gap */
+        min-height: 100svh;
+        height: auto; /* Allow height to adjust */
+        padding: 1.5em; /* Match general mobile padding */
+    }
+
+    .profile-images {
+         max-width: 90%;
+         justify-content: center;
+         flex-wrap: wrap;
+         pointer-events: none; /* Disable hover effects on images */
+         padding: 0; /* Remove padding if added by desktop style */
+    }
+
+    .img {
+        width: 60px;
+        height: 60px;
+        padding: 2.5px; /* Adjust padding for smaller size */
+    }
+
+    .profile-names {
+        height: 4rem; /* Smaller height on mobile */
+    }
+
+     .name h1 {
+        font-size: 4rem; /* Smaller font size on mobile */
+        letter-spacing: 0; /* Adjust letter spacing for mobile */
+        top: 50%; /* Keep centered */
+        transform: translateY(-50%); /* Keep centered */
+        position: absolute; /* Keep absolute positioning */
+        width: 100%; /* Keep width 100% */
+        text-align: center; /* Keep centered text */
+        color: #e3e3db; /* Default light color */
+    }
+
+    .name.default h1 {
+         color: #b62323; /* Your website's specific red color for "The Squad" on mobile */
+    }
+
+     /* Hide SplitText chars on mobile, show the raw H1 */
+    .profile-names .name h1 .char {
+        display: none;
+    }
+     /* --- End of NEW Team Section Mobile CSS --- */
+
+
+    /* Hide the tunnel canvas entirely on mobile */
+    #tunnel-canvas {
+        display: none;
+    }
+
+    /* Hide the scroll-container section on mobile, as tunnel is hidden */
+    #scroll-container {
+        display: none;
+    }
+}

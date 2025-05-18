@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteCoder/Artist</title>
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+    <link rel="stylesheet" href="style2.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/CustomEase.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" defer></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" defer></script>
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
+    <script src="https://unpkg.com/split-type@0.3.4/index.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
+</head>
+
+<body>
+    <div class="loader">
+        <h1 class="counter">0%</h1>
+        <div class="site-teaser">
+            <span>Use headphones for better experience</span>
+        </div>
+        <div class="circles">
+            <div class="circle circle-outer"></div>
+            <div class="circle circle-inner"></div>
+            <div class="circle circle-inner-rotator"></div>
+            <div class="block"></div> 
+        </div>
+    </div>
+
+    <nav>
+        <div class="menu-toggle">
+            <p class="text">Menu</p>
+        </div>
+        <div class="logo">BYTECODER/ARTIST</div>
+        <p>our work</p>
+    </nav>
+
+    <div class="container">
+        <div class="menu-container">
+            <div class="menu">
+                <div class="menu-main">
+                    <div class="menu-top">
+                        <div class="menu-top-title">
+                            <p>Discover</p>
+                        </div>
+                        <div class="menu-top-content">
+                            <div class="menu-item">
+                                <div class="menu-item-link">
+                                    <div class="bg-hover"></div>
+                                    <a href="#home">Home</a>
+                                </div>
+                                <span>Page 001</span>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-link">
+                                    <div class="bg-hover"></div>
+                                    <a href="#team">Team</a>
+                                </div>
+                                <span>Page 002</span>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-link">
+                                    <div class="bg-hover"></div>
+                                    <a href="#work">Work</a>
+                                </div>
+                                <span>Page 003</span>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-link">
+                                    <div class="bg-hover"></div>
+                                    <a href="#skills">Skills</a>
+                                </div>
+                                <span>Page 004</span>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-link">
+                                    <div class="bg-hover"></div>
+                                    <a href="#reviews">Reviews</a>
+                                </div>
+                                <span>Page 005</span>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-link">
+                                    <div class="bg-hover"></div>
+                                    <a href="#contact">Contact Us</a>
+                                </div>
+                                <span>Page 006</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-bottom">
+                        <div class="menu-sub-item">
+                            <div class="menu-title">
+                                <p>Connect</p>
+                            </div>
+                            <div class="menu-content">
+                                <p>Discord</p>
+                            </div>
+                        </div>
+                        <div class="menu-sub-item">
+                            <div class="menu-title">
+                                <p>Buy On</p>
+                            </div>
+                            <div class="menu-content">
+                                <p>Opensea</p>
+                            </div>
+                        </div>
+                        <div class="menu-sub-item">
+                            <div class="menu-title">
+                                <p>IN-EN</p>
+                            </div>
+                            <div class="menu-content">
+                                <p>2025</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-sidebar">
+                    <div class="close-btn">
+                         <ion-icon name="close-sharp"></ion-icon>
+                    </div>
+                    <div class="logo">
+                        <ion-icon name="funnel-sharp"></ion-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="main">
+        <section class="hero" id="home">
+        <h1 class="wow">ByteCoder/Artist</h1>
+        <div id="string">
+            <svg width="1900" height="300">
+                <path d="M 10 100 Q 500 100 1800 100"
+                stroke="black" fill="transparent"
+                />
+            </svg>
+        </div>
+        <div class="hero-copy">
+            <p>One subscription, endless web design.</p>
+            <p>(Scroll)</p>
+        </div>
+        </section>
+
+        <section class="intro">
+        <div class="video-container-desktop">
+            <div class="video-preview">
+            <div class="video-wrapper">
+                <iframe src="https://player.vimeo.com/video/1027126039?background=1&autoplay=1&loop=1&&muted=1&dnt=1&app_id=codegrid" frameBorder="0" allow="autoplay; fullscreen" referrerpolicy="no-referrer" loading="lazy" title="Codegrid video" credentialless></iframe>
+            </div>
+            </div>
+            <div class="video-title">
+            <p>PRO Showreel</p>
+            <p>2024-25</p>
+            </div>
+        </div>
+        <div class="video-container-mobile">
+            <div class="video-preview">
+            <div class="video-wrapper">
+                <iframe src="https://player.vimeo.com/video/1027126039?background=1&autoplay=1&loop=1&&muted=1&dnt=1&app_id=codegrid" frameBorder="0" allow="autoplay; fullscreen" referrerpolicy="no-referrer" loading="lazy" title="Codegrid video" credentialless></iframe>
+            </div>
+            </div>
+            <div class="video-title">
+            <p>PRO Showreel</p>
+            <p>2024-25</p>
+            </div>
+        </div>
+        </section>
+
+        <!-- Start of NEW Team Section HTML -->
+        <section class="team" id="team">
+            <div class="profile-images">
+                <div class="img" data-index="1"><img src="https://th.bing.com/th/id/OIP.-xxWZkGYjtruSY_lywQXKAHaKA?cb=iwc2&rs=1&pid=ImgDetMain" alt=""></div>
+                <div class="img" data-index="2"><img src="https://th.bing.com/th/id/OIP.w_HQbVdNVQUo8zxkHmIvxwHaHa?cb=iwc2&rs=1&pid=ImgDetMain" alt=""></div>
+                <div class="img" data-index="3"><img src="https://th.bing.com/th/id/OIP.3fsvfTGzA33EL1eXtaBmQAHaHa?cb=iwc2&rs=1&pid=ImgDetMain" alt=""></div>
+                <div class="img" data-index="4"><img src="https://th.bing.com/th/id/OIP.kfM6gE5n_IxPxrdgZg7SigHaLH?cb=iwc2&rs=1&pid=ImgDetMain" alt=""></div>
+                <div class="img" data-index="5"><img src="https://th.bing.com/th/id/OIP.IGNf7GuQaCqz_RPq5wCkPgHaLH?cb=iwc2&rs=1&pid=ImgDetMain" alt=""></div>
+                <div class="img" data-index="6"><img src="https://wallpapers.com/images/hd/professional-profile-pictures-1080-x-1080-460wjhrkbwdcp1ig.jpg" alt=""></div>
+                <div class="img" data-index="7"><img src="https://th.bing.com/th/id/OIP.wo08AT7gnxyregR84BbFRQHaJQ?cb=iwc2&rs=1&pid=ImgDetMain" alt=""></div>
+                <div class="img" data-index="8"><img src="https://images.pexels.com/photos/14183102/pexels-photo-14183102.jpeg?cs=srgb&dl=pexels-143deepak-14183102.jpg&fm=jpg" alt=""></div>
+                <div class="img" data-index="9"><img src="./IMG-20240803-WA0053 1.png" alt=""></div>
+            </div>
+
+            <div class="profile-names">
+                <div class="name default"><h1>The Squad</h1></div>
+                <!-- Names below should correspond to images by index -->
+                <div class="name"><h1>Paramjeet</h1></div>
+                <div class="name"><h1>Ritesh</h1></div>
+                <div class="name"><h1>Amarjeet</h1></div>
+                <div class="name"><h1>Tyson</h1></div>
+                <div class="name"><h1>Max</h1></div>
+                <div class="name"><h1>Everest</h1></div>
+                <div class="name"><h1>Simon</h1></div>
+                <div class="name"><h1>Gideon</h1></div>
+                <div class="name"><h1>ByteCoder</h1></div>
+            </div>
+        </section>
+        <!-- End of NEW Team Section HTML -->
+
+        <!-- This section is explicitly for the tunnel scroll trigger -->
+        <div id="scroll-container"></div>
+
+        <section class="work" id="work">
+        <div class="text-container"></div>
+        <div class="cards">
+            <div class="card">
+            <div class="card-img">
+                <img src="./hackathon round 2-Cover.jpg" alt="Eclipse Horizon Image" />
+            </div>
+            <div class="card-copy">
+                <p>CineVerse</p>
+                <p>739284</p>
+            </div>
+            </div>
+            <div class="card">
+            <div class="card-img">
+                <img src="./logitech.png" alt="Vision Link Image" />
+            </div>
+            <div class="card-copy">
+                <p>Logitech Redesign</p>
+                <p>385912</p>
+            </div>
+            </div>
+            <div class="card">
+            <div class="card-img">
+                <img src="./Screenshot 2025-05-17 190136.png" alt="Iron Bond Image" />
+            </div>
+            <div class="card-copy">
+                <p>Nike Redesign</p>
+                <p>621478</p>
+            </div>
+            </div>
+            <div class="card">
+            <div class="card-img">
+                <img src="./Slide 16_9 - 13.png" alt="Golden Case Image" />
+            </div>
+            <div class="card-copy">
+                <p>ByteCoder/Artist</p>
+                <p>839281</p>
+            </div>
+            </div>
+            <div class="card">
+            <div class="card-img">
+                <img src="./starbucks.jpg" alt="Virtual Space Image" />
+            </div>
+            <div class="card-copy">
+                <p>Starbucks Redesign</p>
+                <p>456732</p>
+            </div>
+            </div>
+            <div class="card">
+            <div class="card-img">
+                <img src="./suiton.png" alt="Smart Vision Image" />
+            </div>
+            <div class="card-copy">
+                <p>Suiton</p>
+                <p>974315</p>
+            </div>
+            </div>
+            <div class="card">
+            <div class="card-img">
+                <img src="./Untitled-Thumbnail(1).jpg" alt="Desert Tunnel Image" />
+            </div>
+            <div class="card-copy">
+                <p>Portfolio</p>
+                <p>682943</p>
+            </div>
+            </div>
+        </div>
+        </section>
+
+                <!-- Start of NEW Skills Section -->
+        <section class="skills-section" id="skills">
+            <div class="marquee-container">
+                <div class="marquee-track">
+                    <span>LANGUAGES WE CODE</span>
+                    <span>LANGUAGES WE CODE</span>
+                    <span>LANGUAGES WE CODE</span>
+                    <span>LANGUAGES WE CODE</span>
+                    <span>LANGUAGES WE CODE</span>
+                </div>
+            </div>
+            <div class="skills-content">
+                <div class="skills-grid">
+                    <p class="skill-pill" id="skill-figma">Figma</p>
+                    <p class="skill-pill" id="skill-adobe">Adobe XD</p>
+                    <p class="skill-pill" id="skill-html">HTML</p>
+                    <p class="skill-pill" id="skill-css">CSS</p>
+                    <p class="skill-pill" id="skill-javascript">JavaScript</p>
+                    <p class="skill-pill" id="skill-gsap">GSAP</p>
+                    <p class="skill-pill" id="skill-scrolltrigger">ScrollTrigger</p>
+                    <p class="skill-pill" id="skill-ui">UI</p>
+                    <p class="skill-pill" id="skill-ux">UX</p>
+                    <p class="skill-pill" id="skill-logo">Logo & Branding</p>
+                    <p class="skill-pill" id="skill-animation">Animation</p>
+                    <p class="skill-pill" id="skill-threejs">Threejs</p>
+                    <p class="skill-pill" id="skill-modern">Modern</p>
+                </div>
+            </div>
+        </section>
+                <!-- Start of NEW Review Section -->
+        <section class="reviews" id="reviews">
+            <div class="bg-img">
+                <!-- IMPORTANT: Update this src to your desired background image -->
+                <img src="./Slide 16_9 - 13.png" alt="Reviews Background Image">
+            </div>
+            <canvas class="outline-layer"></canvas>
+            <div class="review-cards-container">
+                <div class="review-card">
+                    <h3>Sarah L.</h3>
+                    <p>"ByteCoder/Artist transformed our vision into a stunning, interactive reality. Truly exceptional work and creativity!"</p>
+                </div>
+                <div class="review-card">
+                    <h3>Mike P.</h3>
+                    <p>"The attention to detail and the smooth animations are top-notch. Our users love the new site. Highly recommended!"</p>
+                </div>
+                <div class="review-card">
+                    <h3>Tech Solutions Inc.</h3>
+                    <p>"Professional, innovative, and delivered beyond expectations. The dynamic elements are a game-changer for engagement."</p>
+                </div>
+                 <div class="review-card">
+                    <h3>John B.</h3>
+                    <p>"Working with them was a breeze. They understood our needs perfectly and created something truly unique for our brand."</p>
+                </div>
+            </div>
+            <canvas class="fill-layer"></canvas>
+        </section>
+                <!-- Start of NEW Footer Section -->
+        <footer class="footer" id="contact"> <!-- Added id="contact" if this is your contact section -->
+            <div class="footer-content">
+                <div class="footer-header">
+                    <h2>
+                        <span class="light-text">Find the essence in simplicity,</span>
+                        <span class="bold-text">Create without boundaries.</span>
+                    </h2>
+                </div>
+
+                <div class="footer-grid">
+                    <div class="footer-column">
+                        <div class="footer-section">
+                            <h3>Contact</h3>
+                            <p><a href="mailto:info@bytecoderartist.com">info@bytecoderartist.com</a></p>
+                            <p><a href="tel:+1234567890">+1.234.567.890</a></p>
+                        </div>
+                        <div class="footer-section">
+                            <h3>Socials</h3>
+                            <p><a href="#" target="_blank">Instagram</a></p>
+                            <p><a href="#" target="_blank">LinkedIn</a></p>
+                        </div>
+                    </div>
+
+                    <div class="footer-column">
+                        <div class="footer-section">
+                            <p><a href="#home">Home</a></p>
+                            <p><a href="#team">Team</a></p>
+                            <a href="#work"><p>Work</p></a>
+                        </div>
+                        <div class="footer-section">
+                            <h3>Legal</h3>
+                            <p><a href="#">Privacy Policy</a></p>
+                            <p><a href="#">Terms of Service</a></p>
+                        </div>
+                    </div>
+
+                    <div class="footer-column">
+                        <div class="footer-section">
+                            <p><a href="#skills">Skills</a></p>
+                            <p><a href="#reviews">Reviews</a></p>
+                            <p><a href="#contact">Contact Us</a></p> <!-- Or link to a dedicated contact page -->
+                        </div>
+                        <div class="footer-section">
+                            <h3>Location</h3>
+                            <p>Innovating Globally</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-logo">
+                    <div class="footer-large-text">BYTECODER</div>
+                </div>
+            </div>
+        </footer>
+    </main>
+    <!-- SplitText from CDN is already correctly placed here -->
+    <script type="module" src="script2.js" defer></script>
+</body>
+
+</html>

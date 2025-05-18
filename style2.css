@@ -1,0 +1,1549 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.cdnfonts.com/css/pp-neue-montreal'); /* Added PP Neue Montreal font */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'PP Neue Montreal', sans-serif;
+    color: #1a1a1a; /* Theme Dark */
+    background-color: #e3e3db; /* Theme Light */
+    overflow-x: hidden;
+}
+
+/* Base font sizes - adjusted slightly */
+h1 {
+    font-size: 60px;
+    font-weight: 500;
+}
+
+p {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+a {
+    text-decoration: none;
+    color: inherit; /* Inherit color by default */
+    font-size: 20px;
+    font-weight: 500;
+}
+
+
+section {
+    width: 100%;
+    min-height: 100svh; /* Use min-height for better responsiveness */
+    padding: 2.5em;
+    position: relative;
+    z-index: 1; /* Ensure sections are above the tunnel canvas if active */
+    box-sizing: border-box; /* Include padding in element's total width/height */
+}
+
+/* Ensure main content is not hidden by fixed nav */
+main {
+   padding-top: 0; /* Removed default padding-top */
+}
+
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 4em;
+}
+
+.hero h1 {
+    position: relative;
+    top: 0.5em; /* Keep desktop offset */
+    left: -0.05em; /* Keep desktop offset */
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 10vw;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+
+.hero-copy {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    bottom: 0;
+    width: 100%; /* Ensure it takes full width for justify-content */
+}
+.hero-copy p {
+    font-size: 1.2em; /* Adjusted slightly */
+}
+
+
+.outro { /* Assuming this section is still used somewhere */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e3e3db; /* THEME - same as body */
+    color: #1a1a1a; /* THEME */
+}
+
+.outro h1 {
+  font-family: "Bebas Neue", sans-serif; /* THEME */
+  font-size: 5vw;
+  font-weight: lighter;
+  text-transform: uppercase;
+}
+
+
+.intro {
+    min-height: 100%; /* Allow intro height to be dictated by content */
+    display: flex;
+    flex-direction: column; /* Ensure content stacks if needed */
+    justify-content: center; /* Vertically center content */
+}
+
+.video-container-desktop {
+    position: relative;
+    /* Initial transform is set by JS for animation */
+    display: flex; /* Always flex, JS handles display: none for mobile */
+    flex-direction: column;
+    gap: 2em; /* Initial gap for animation */
+    top: 0.5em;
+    will-change: transform;
+}
+
+.video-container-mobile {
+    display: none; /* Initially hidden */
+    width: 100%;
+    max-width: 800px; /* Max width even when shown */
+    margin: 0 auto; /* Center mobile video container */
+    flex-direction: column; /* Stack video and title */
+    gap: 1em; /* Gap for mobile */
+}
+
+.video-preview {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 1.5rem;
+    background-color: #b9b9b3; /* Theme accent */
+    overflow: hidden;
+}
+
+.video-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5rem;
+    overflow: hidden;
+}
+
+iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5rem;
+    pointer-events: none;
+}
+
+.video-container-desktop .video-title p {
+    position: relative;
+    font-size: 78px; /* Initial font size for desktop animation */
+    font-weight: 500;
+    color: #1a1a1a; /* Theme Dark */
+}
+.video-container-mobile .video-title p {
+     /* Initial font size for mobile */
+    font-size: 24px; /* Adjusted for mobile */
+    font-weight: 500;
+    color: #1a1a1a; /* Theme Dark */
+    text-align: center; /* Center mobile title */
+}
+
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0; /* Use left 0 and width 100% for simpler control */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2.5em; /* Match section padding for desktop */
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.5rem; /* Adjusted font size */
+    font-weight: 400;
+    font-style: normal;
+    color: #1a1a1a; /* Theme Dark */
+    z-index: 1001;
+    background-color: #e3e3db61; /* Ensure nav has a background */
+}
+nav .logo {
+    font-size: 1.5em; /* Make logo slightly bigger relative to nav text */
+    font-weight: 600;
+}
+nav p {
+    font-size: 1em;
+    font-weight: 400;
+}
+nav .nav-services-text {
+    /* Specific class for the "our services" text if needed */
+}
+
+
+.container {
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Ensure container doesn't block interactions */
+}
+
+.menu-container {
+    position: fixed;
+    top: 0; /* Start from top */
+    left: -100%; /* Start off-screen to the left */
+    width: 45%; /* Desktop width */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1003;
+    transition: left 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    pointer-events: none; /* Initially prevent interaction */
+}
+
+.menu-container.is-open {
+    left: 0%; /* Slide in */
+    pointer-events: all; /* Allow interaction when open */
+}
+
+
+.menu {
+    width: 100%;
+    height: 100%;
+    background-color: #1a1a1a;
+    color: #e3e3db;
+    border-radius: 20px;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    overflow: hidden;
+}
+
+.menu-main {
+    flex: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+.menu-sidebar {
+    flex: 0.2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; /* Center icons */
+}
+
+.menu-top {
+    display: flex;
+    flex: 1;
+}
+
+.menu-bottom {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.menu-top-title {
+    flex: 1;
+    padding: 2em;
+    display: flex;
+    align-items: center; /* Vertically center title */
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+.menu-top-content {
+    padding: 1.25em 0;
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center menu items */
+}
+
+.menu-item {
+    position: relative;
+    left: -100px; /* Initial position for animation */
+    padding: 0.5em 2em; /* Added left/right padding */
+    transition: none; /* GSAP handles animation, REMOVED CSS TRANSITION */
+    overflow: hidden; /* Hide text initially off-screen */
+}
+
+.menu-item-link {
+    position: relative;
+    display: inline-block; /* Allow bg-hover sizing */
+    padding-right: 2em; /* Space for span */
+}
+
+.menu-item-link a {
+    position: relative;
+    text-decoration: none;
+    color: #e3e3db; /* Theme Light */
+    font-size: 48px;
+    padding-left: 10px;
+    z-index: 2;
+    display: inline-block;
+}
+
+.menu-item#active .menu-item-link a {
+    color: #1a1a1a; /* Theme Dark */
+}
+
+.menu-item:hover .menu-item-link a {
+    color: #1a1a1a; /* Theme Dark */
+}
+
+
+.bg-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: #e3e3db; /* Theme Light */
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 95% 100%, 0 100%, 0% 50%);
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.menu-item:hover .bg-hover {
+   opacity: 1;
+}
+
+.menu-item#active .bg-hover {
+    background-color: #e3e3db; /* Theme Light */
+    opacity: 1;
+}
+
+.menu-item span {
+    position: absolute;
+    right: 0;
+    top: 50%; /* Vertically center span */
+    transform: translateY(-50%);
+    padding-right: 1em; /* Adjust padding */
+    color: rgba(227, 227, 219, 0.5); /* Theme Light with transparency */
+    transition: color 0.3s ease;
+    font-size: 0.8em;
+}
+
+/* Overall hover/active color for the span text itself */
+.menu-item:hover span,
+.menu-item#active span {
+    color: #e3e3db; /* Theme Light */
+}
+
+/* Default color for characters within the span (pre-shuffle, pre-char-active) */
+.menu-item span .word .char {
+    color: rgba(227, 227, 219, 0.5); /* Matches the span's default color */
+    transition: color 0.1s linear; /* Smooth color transition for chars */
+}
+
+/* Color of span characters when their parent .menu-item is hovered or active (during shuffle) */
+.menu-item:hover span .word .char,
+.menu-item#active span .word .char {
+    color: #e3e3db; /* Theme Light */
+}
+
+/* Color of span characters that get 'char-active' class (e.g., via colorChars JS function) */
+.menu-item:hover span .word .char.char-active {
+   color: #e3e3db; /* Theme Light */
+}
+
+
+.menu-sub-item {
+    width: 100%;
+    display: flex;
+    gap: 1em;
+    border-top: 1px solid rgba(255, 255, 255, 0.125);
+    padding: 1em 2em;
+}
+
+.menu-title {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+.menu-content {
+    flex: 4;
+    padding-left: 2em;
+    display: flex;
+    align-items: center;
+}
+
+.menu-content p {
+    position: relative;
+    width: max-content;
+    padding: 0.125em;
+    font-size: 1rem;
+}
+.menu-content p a {
+     color: inherit; /* Inherit color from parent p */
+     font-size: 1em; /* Match parent p font size */
+     text-decoration: none; /* Ensure links don't have default underline */
+}
+
+
+.menu-content p::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: #e3e3db; /* Theme Light */
+    mix-blend-mode: difference;
+    transition: width 0.3s ease; /* Use transition for hover effect */
+}
+
+.menu-content p:hover::after {
+    width: 100%; /* Fill on hover */
+}
+
+
+.close-btn, .menu-sidebar .logo {
+    padding: 1.5em;
+    font-size: 2rem; /* Icon size */
+    display: flex; /* Center icon */
+    justify-content: center;
+    align-items: center;
+}
+
+.close-btn {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.125);
+    cursor: pointer;
+}
+
+
+#string{
+    height: 300px; /* Keep desktop height */
+    top: 7rem; /* Keep desktop offset */
+    width: 100%;
+    position: relative;
+    pointer-events: none; /* Prevent it from blocking mouse events */
+}
+
+#string svg{
+  width: 100%;
+  height: 100%; /* Ensure SVG takes full height of container */
+  pointer-events: all; /* Allow mouse events on the SVG specifically */
+}
+
+#string svg path {
+    /* Initial path defined in JS */
+    stroke-width: 2px; /* Make line slightly thicker */
+}
+
+
+img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+/* --- Team Section CSS --- */
+section.team {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    overflow: hidden;
+    font-family: "Bebas Neue", sans-serif;
+    z-index: 1;
+    padding: 2.5em; /* Match section padding */
+}
+
+.profile-images {
+    width: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap; /* Prevent wrapping on desktop */
+    pointer-events: all; /* Allow hover */
+}
+
+.img {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    padding: 5px;
+    cursor: pointer;
+    will-change: width, height, transform; /* Add transform for potential scale animation */
+}
+
+.profile-names {
+    width: 100%;
+    height: 20rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.name {
+    position: absolute;
+    width: 100%; /* Name container takes full width */
+    height: 100%; /* Name container takes full height */
+    display: flex; /* Use flex to center H1 */
+    justify-content: center;
+    align-items: center;
+}
+
+.name h1 {
+    position: relative; /* H1 is relative inside flex parent */
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 17rem;
+    font-weight: 800;
+    letter-spacing: -0rem;
+    line-height: 1;
+    color: #1a1a1a;
+    user-select: none;
+    /* Removed absolute positioning and transforms handled by flex on parent */
+}
+
+.name.default h1 {
+    color: #b62323; /* Your website's specific red color for "The Squad" */
+}
+
+/* SplitText .char class specific to Team names */
+.profile-names .team-char { /* Use specific class */
+    position: relative;
+    display: inline-block;
+    will-change: transform, opacity;
+}
+/* --- End of Team Section CSS --- */
+
+
+/* Styles for the #scroll-container (for tunnel animation) - HIDDEN ON MOBILE */
+#scroll-container {
+  width: 100vw;
+  height: 300vh; /* Controls scroll duration of tunnel intro. Adjust as needed. */
+  pointer-events: none;
+  position: relative;
+  z-index: 0;
+  /* Removed background */
+}
+
+/* Canvas for tunnel is styled via JS (fixed, z-index: -1), BUT add initial opacity here */
+#tunnel-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+    background-color: #000;
+}
+
+
+/* --- Work Section CSS --- */
+section.work {
+  position: relative;
+  z-index: 1;
+  background-color: #000; /* Black background for this section */
+  overflow: hidden; /* Hide canvases and cards overflow */
+  padding: 0; /* Remove padding to allow canvases/cards full width/height */
+}
+
+/* Canvases within .work section - HIDDEN ON MOBILE */
+canvas#grid-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Cover the section */
+  height: 100%; /* Cover the section */
+  z-index: 0;
+}
+
+canvas#letters-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Cover the section */
+  height: 100%; /* Cover the section */
+  z-index: 1;
+}
+
+.text-container { /* Used for letter positioning - HIDDEN ON MOBILE */
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  pointer-events: none;
+  perspective: 2500px;
+  perspective-origin: center;
+}
+
+/* SplitText .letter class specific to Work text */
+.work .text-container .letter {
+  position: absolute; /* Positioned by JS */
+  font-family: "Bebas Neue", sans-serif; /* THEME */
+  font-size: 8rem;
+  font-weight: bold;
+  color: #e3e3db; /* Theme Light */
+  z-index: 2; /* Above canvas, below cards */
+  transform-origin: center;
+  transform-style: preserve-3d;
+  will-change: transform;
+  pointer-events: none; /* Don't block interaction */
+}
+
+.cards {
+  position: relative; /* Positioned by GSAP */
+  width: 500vw; /* Desktop width */
+  height: 100vh;
+  padding-left: 100vw; /* Start off-screen */
+  overflow: hidden; /* Hide cards initially off-screen */
+  display: flex;
+  justify-content: flex-start; /* Align items to the start of the flex container */
+  align-items: center;
+  gap:2rem;
+  z-index: 10; /* Ensure cards are visible above everything */
+  will-change: transform; /* Optimize for GSAP animation */
+  /* Removed overflow-x: auto; */ /* Handled by GSAP horizontal scroll */
+}
+
+.card {
+  width: 18%; /* Desktop width */
+  min-width: 300px; /* Prevent cards from becoming too small */
+  height: 55%;
+  padding: 8px;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.card-img {
+  flex: 1;
+  overflow: hidden;
+}
+
+.card-copy {
+  min-height: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4px;
+  text-transform: uppercase;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 12px;
+  color: #e3e3db;
+}
+/* --- End of Work Section CSS --- */
+
+/* --- Skills Section CSS --- */
+.skills-section {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #e3e3db; /* Theme background */
+    color: #1a1a1a; /* Theme text color */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0; /* Override default section padding for full-width marquee */
+    position: relative;
+    z-index: 1;
+    overflow: hidden; /* Prevent horizontal scroll from marquee */
+    box-sizing: border-box;
+}
+
+/* Marquee Container */
+.marquee-container {
+    width: 100%;
+    background-color: #1a1a1a; /* Black background for marquee */
+    color: #e3e3db; /* Light text for marquee */
+    padding: 1em 0;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-bottom: 3em;
+    flex-shrink: 0;
+    border-top: 1px solid #1a1a1a; /* Add border */
+    border-bottom: 1px solid #1a1a1a; /* Add border */
+}
+
+.marquee-track {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee-animation 25s linear infinite;
+    will-change: transform;
+}
+
+.marquee-track span {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 4vw;
+    text-transform: uppercase;
+    padding: 0 1.5em;
+    font-weight: bold;
+    display: inline-block;
+}
+
+@keyframes marquee-animation {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+/* Skills Content Area */
+.skills-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+    padding: 2em;
+    box-sizing: border-box;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5em;
+    max-width: 900px;
+    padding: 1em;
+}
+
+.skill-pill {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.6rem;
+    color: #1a1a1a;
+    background-color: transparent;
+    border: 2px solid #1a1a1a;
+    padding: 0.6em 1.8em;
+    border-radius: 50px;
+    text-transform: uppercase;
+    font-weight: normal;
+    filter: blur(8px); /* Initial state for GSAP */
+    opacity: 0; /* Initial state for GSAP */
+    transform: translateY(20px); /* Initial state for GSAP */
+    will-change: filter, opacity, transform;
+}
+/* --- End of Skills Section CSS --- */
+
+/* --- Review Section CSS --- */
+section.reviews {
+    position: relative;
+    width: 100vw;
+    height: 100vh; /* Pinned height */
+    background-color: #e3e3db;
+    overflow: hidden;
+    z-index: 1;
+    padding: 0; /* Remove padding to allow canvases full size */
+    box-sizing: border-box;
+}
+
+section.reviews .bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+section.reviews .bg-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3;
+}
+
+section.reviews canvas.outline-layer,
+section.reviews canvas.fill-layer {
+    position: absolute; /* Will be changed to fixed on mobile */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center canvas */
+    width: 150%; /* Overdraw */
+    height: 150%;
+    pointer-events: none;
+    z-index: 2; /* Above background image */
+}
+
+section.reviews canvas.fill-layer {
+    z-index: 4; /* Above cards on desktop */
+}
+
+.review-cards-container {
+    position: relative; /* Will be positioned by GSAP on desktop */
+    top: 0;
+    left: 0; /* Initial position for desktop GSAP */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-left: 100vw; /* Start cards off-screen to the right for desktop */
+    z-index: 3; /* Between outline and fill canvas layers on desktop */
+    will-change: transform;
+    gap: 3vw; /* Gap between cards */
+}
+
+.review-card {
+    width: 22vw;
+    height: 50vh;
+    min-width: 280px;
+    background-color: #1a1a1a;
+    color: #e3e3db;
+    border-radius: 15px;
+    padding: 2em;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.review-card h3 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 2rem;
+    color: #fff8f8; /* Accent color */
+    margin-bottom: 0.5em;
+    font-weight: 400;
+}
+
+.review-card p {
+    font-family: 'PP Neue Montreal', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    font-weight: 400;
+}
+/* --- End of Review Section CSS --- */
+
+/* --- Footer Section CSS --- */
+.footer {
+  color: #e3e3db; /* Theme Light */
+  background-color: #1a1a1a; /* Theme Dark */
+  padding: 8rem 2.5em;
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+  font-family: 'PP Neue Montreal', sans-serif;
+  letter-spacing: -0.03em;
+  box-sizing: border-box;
+}
+
+.footer-content {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-header {
+  margin-bottom: 6rem;
+}
+
+.footer-header h2 {
+  font-size: 4vw;
+  line-height: 1.1;
+  text-transform: none;
+  font-family: 'PP Neue Montreal', sans-serif;
+}
+
+.footer-header .light-text {
+  display: block;
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.footer-header .bold-text {
+  display: block;
+  font-weight: 700;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  margin-bottom: 8rem;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.footer-section h3 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  opacity: 0.6;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.footer-section p {
+  font-family: 'PP Neue Montreal', sans-serif;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  text-transform: none;
+  font-weight: 500;
+}
+
+.footer-section a {
+  color: #b9b9b3; /* Theme Accent */
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.footer-section a:hover {
+  opacity: 0.7;
+}
+
+.footer-logo {
+  width: 100%;
+  margin-top: 4rem;
+  display: flex; /* Center the text */
+  justify-content: center;
+  align-items: center;
+  min-height: 50px; /* Ensure it has some height */
+}
+
+.footer-large-text {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 20vw;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #e3e3db;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    opacity: 1; /* Start visible, GSAP will handle animation */
+}
+
+/* SplitText .char class specific to footer text */
+.footer-large-text .char {
+    display: inline-block; /* Important for Y translation */
+}
+
+/* --- End of Footer Section CSS --- */
+
+
+.loader {
+    position: fixed;
+    top: 0;
+    overflow: hidden;
+    left: 0;
+    width: 100%;
+    z-index: 1005;
+    height: 100%;
+    background: #000;
+}
+
+.counter {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    color: #e3e3db;
+    padding: 2rem 4rem;
+    font-size: 10vw;
+    z-index: 1005;
+    font-weight: lighter;
+    font-style: italic;
+    z-index: 1000;
+}
+
+.site-teaser span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 2rem 4rem;
+    color: #e3e3db;
+    font-size: 1rem;
+    z-index: 1005;
+    font-weight: lighter;
+    font-style: italic;
+}
+
+.circles {
+    position: absolute;
+    left: 5rem;
+    bottom: 5rem;
+    width: 400px;
+    height: 400px;
+    border-radius: 100%;
+    z-index: 1005;
+
+}
+
+.circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: 2px solid #e3e3db;
+    border-radius: 100%;
+    z-index: 1005;
+
+}
+
+.circle-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    z-index: 1005;
+
+}
+
+.circle-inner-rotator {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    width: 162.5px;
+    height: 162.5px;
+    background: none;
+    border: 3px solid #e3e3db;
+    border-radius: 100%;
+    z-index: 1005;
+
+}
+
+.block {
+    position: absolute;
+    top: -100px;
+    left: 200px;
+    width: 0px;
+    height: 0px;
+    display: none;
+    background: none;
+    border: 2px solid #e3e3db;
+    transform-origin: bottom;
+    z-index: 1005;
+
+}
+
+
+
+/* ============================================= */
+/* ==== Mobile & Tablet Responsiveness ==== */
+/* ============================================= */
+
+@media (max-width: 900px) {
+    /* General Adjustments */
+    section {
+        padding: 1.5em; /* Reduced padding on smaller screens */
+        min-height: auto; /* Allow height to be determined by content */
+        height: auto; /* Ensure sections don't force 100vh if content is shorter */
+    }
+
+     /* Ensure main content is not hidden by fixed nav */
+     main {
+        padding-top: 4em; /* Add padding to main to offset fixed nav */
+     }
+
+    nav {
+        padding: 0.8em 1.5em; /* Adjusted padding for nav */
+        font-size: 1.2rem; /* Reduced nav font size */
+    }
+     nav .logo {
+         font-size: 1.4em; /* Adjusted logo size relative to nav text */
+     }
+    nav .nav-services-text {
+        display: none; /* Hide "our services" text on mobile */
+    }
+    nav .text{
+        display: block;
+    }
+
+    nav p{
+        display: none;
+    }
+    /* Menu Adjustments */
+    .menu-container {
+        width: 100%; /* Full width */
+        top: 0;
+        transform: none; /* Remove translateY */
+        padding: 0; /* Remove container padding */
+        /* Left animation handled by JS */
+    }
+    .menu {
+        border-radius: 0;
+        height: 100vh;
+        top: 0;
+        position: absolute;
+        width: 100%;
+        left: 0;
+    }
+    .menu-main {
+        flex-direction: column; /* Stack main menu items vertically */
+        border-right: none; /* Remove vertical border */
+    }
+     .menu-top {
+         flex-direction: column; /* Stack top menu parts */
+         flex: none; /* Don't use flex-grow here */
+     }
+    .menu-bottom {
+        flex: none; /* Don't use flex-grow here */
+    }
+
+    .menu-top-title,
+    .menu-item span,
+    .menu-title {
+        display: none; /* Hide these elements on mobile */
+    }
+
+    .menu-top-content {
+         padding: 2em 1.5em; /* Adjust padding for content area */
+         justify-content: flex-start; /* Align items to top */
+         flex-grow: 1; /* Allow content to take available space */
+    }
+
+    .menu-item {
+        padding: 0.75em 0; /* Adjusted padding */
+        left: -100px; /* Keep JS start position */
+         /* Remove manual transition, GSAP handles it */
+    }
+
+    .menu-item-link a {
+        font-size: 32px; /* Reduced font size for menu links */
+        letter-spacing: -1px;
+        padding-left: 0; /* Remove padding */
+    }
+
+    .menu-sub-item {
+        padding: 1em 1.5em; /* Adjusted padding */
+        gap: 0.5em; /* Reduced gap */
+        flex-direction: column; /* Stack title and content */
+        align-items: flex-start; /* Align text to left */
+    }
+     .menu-content {
+        padding-left: 0; /* Remove left padding */
+     }
+     .menu-content p {
+        font-size: 1.1rem; /* Adjusted sub-item content font size */
+     }
+     .menu-sub-item .menu-title {
+        /* Specific styles if needed for title when displayed (currently none) */
+     }
+
+
+    /* Hero Adjustments */
+    .hero {
+         /* No longer space-between, content stacks */
+        justify-content: flex-start;
+        gap: 3em; /* Added space between h1 and copy */
+    }
+    .hero h1 {
+        font-size: 10vw; /* Larger on mobile to fill width */
+         top: 0; /* Remove desktop offset */
+         left: 0; /* Remove desktop offset */
+         text-align: center; /* Center h1 */
+    }
+    .hero-copy {
+        flex-direction: column; /* Stack copy text */
+        gap: 0.5em; /* Space between lines */
+        align-items: center; /* Center copy text */
+    }
+     .hero-copy p {
+         font-size: 1em; /* Slightly smaller */
+     }
+
+    #string {
+         display: none; /* Hide the SVG string on mobile */
+    }
+
+
+    /* Intro Adjustments */
+    .video-container-desktop {
+        display: none; /* Hide desktop video container */
+    }
+    .video-container-mobile {
+        display: flex; /* Show mobile video container */
+    }
+
+
+    /* Team Adjustments */
+    section.team {
+        flex-direction: column-reverse; /* Images below names */
+        gap: 1.5rem; /* Reduced gap */
+        min-height: auto; /* Allow height to fit content */
+        padding: 3em 1.5em; /* Adjusted padding */
+    }
+
+    .profile-images {
+        max-width: 100%; /* Use full width */
+        flex-wrap: wrap; /* Allow images to wrap */
+        justify-content: center; /* Center images when wrapped */
+         /* pointer-events handled by JS for mobile */
+        gap: 0.5rem; /* Reduced gap between wrapped images */
+        padding: 0; /* Remove padding */
+    }
+
+    .img {
+        width: 50px; /* Smaller image size */
+        height: 50px;
+        padding: 3px; /* Adjust padding */
+        cursor: pointer; /* Change cursor */
+        /* GSAP animation disabled in JS */
+    }
+
+    .profile-names {
+        height: 4rem; /* Reduced height */
+        overflow: hidden; /* Hide overflow during transitions */
+    }
+
+    .name h1 {
+        font-size: 4rem; /* Drastically reduced font size */
+        letter-spacing: 0; /* Adjusted spacing */
+        /* Positioning handled by parent flex */
+        top: 50%;
+        transform: translateY(-50%);
+        position: absolute;
+        width: 100%;
+        text-align: center;
+    }
+
+     /* Hide SplitText chars on mobile, show the raw H1 content */
+    .profile-names .team-char { /* Use specific class */
+        display: none !important; /* Use !important to ensure it overrides inline styles */
+    }
+
+
+    /* Tunnel (Hidden on Mobile) */
+    #scroll-container,
+    #tunnel-canvas {
+        display: none;
+    }
+
+
+    /* Work Adjustments (Animation Disabled) */
+    section.work {
+        background-color: #000;
+        overflow-x: hidden; /* Prevent horizontal scroll */
+        overflow-y: auto; /* Allow cards container to scroll vertically */
+        padding: 3em 1.5em; /* Add padding back */
+        min-height: auto; /* Allow height to fit content */
+        height: auto;
+    }
+
+    /* Hide elements used only for desktop animation */
+    canvas#grid-canvas,
+    canvas#letters-canvas,
+    .text-container {
+        display: none;
+    }
+
+    .cards {
+        position: relative; /* Revert positioning */
+        width: 100%; /* Use full width */
+        height: auto; /* Height dictated by content */
+        padding-left: 0; /* Remove offset padding */
+        overflow: hidden; /* Hide card overflow */
+        display: flex;
+        flex-direction: column; /* Stack cards vertically */
+        justify-content: flex-start; /* Align items to the start */
+        align-items: center; /* Center cards horizontally */
+        gap: 1.5rem; /* Vertical gap between cards */
+        z-index: 1; /* Adjusted z-index */
+        will-change: auto; /* No complex transform animation */
+    }
+
+    .card {
+        width: 90%; /* Wider cards on mobile */
+        min-width: 0; /* Remove min-width */
+        max-width: 350px; /* Optional: Add a max-width */
+        height: auto; /* Height dictated by content */
+        padding: 10px; /* Adjusted padding */
+        gap: 6px; /* Reduced gap */
+        flex-shrink: 0; /* Keep flex-shrink 0 */
+    }
+
+    .card-copy {
+        min-height: auto; /* Auto height */
+        font-size: 14px; /* Slightly larger font */
+    }
+
+
+    /* Skills Adjustments */
+    .marquee-container {
+        padding: 0.6em 0; /* Reduced padding */
+        margin-bottom: 2em;
+    }
+    .marquee-track span {
+        font-size: 7vw; /* Larger font on mobile */
+        padding: 0 1em; /* Reduced spacing */
+    }
+     .skills-content {
+         padding: 1em; /* Reduced padding */
+     }
+    .skills-grid {
+        gap: 1em; /* Reduced gap */
+        padding: 0.5em; /* Reduced padding */
+    }
+    .skill-pill {
+        font-size: 1.3rem; /* Reduced font size */
+        padding: 0.5em 1.3em; /* Adjusted padding */
+    }
+
+
+    /* Review Adjustments */
+    section.reviews {
+        padding: 0; /* No padding */
+        height: auto; /* Allow height to fit content when not pinned */
+        min-height: auto;
+        overflow: hidden; /* Hide card overflow during vertical scroll */
+    }
+
+     section.reviews canvas.outline-layer,
+    section.reviews canvas.fill-layer {
+         /* Cover the section viewport */
+        position: fixed; /* Keep canvases fixed in viewport */
+        top: 0;
+        left: 0;
+        transform: none; /* No centering transform */
+        width: 100vw; /* Cover full viewport */
+        height: 100vh; /* Cover full viewport */
+        z-index: 2; /* Adjusted z-index: outline below cards */
+         opacity: 1; /* Ensure canvases are initially visible on mobile */
+    }
+     section.reviews canvas.fill-layer {
+         z-index: 4; /* Adjusted z-index: fill above cards */
+     }
+
+
+    .review-cards-container {
+        position: relative; /* Revert positioning */
+        top: auto;
+        left: auto;
+        height: auto; /* Height determined by content */
+        padding-left: 1.5em; /* Add left padding (match section padding) */
+        padding-right: 1.5em; /* Add right padding */
+        padding-top: 60vh; /* Add padding at the top to allow triangle animation to show behind */
+        padding-bottom: 60vh; /* Add padding at the bottom to allow triangle animation to show behind */
+        display: flex;
+        flex-direction: column; /* Stack cards vertically */
+        align-items: center; /* Center cards horizontally */
+        z-index: 3; /* Cards are between outline and fill layers */
+        will-change: auto; /* No complex transform animation */
+        gap: 1.5rem; /* Vertical gap between cards */
+    }
+
+    .review-card {
+        width: 90%; /* Wider cards on mobile */
+        max-width: 400px; /* Optional: Add a max-width */
+        height: auto; /* Height determined by content */
+        min-width: 0; /* Remove min-width */
+        padding: 1.5em; /* Adjusted padding */
+        margin-right: 0; /* Remove horizontal margin */
+        /* Vertical margin handled by container gap */
+    }
+
+    .review-card h3 {
+        font-size: 1.8rem;
+    }
+    .review-card p {
+        font-size: 0.85rem;
+    }
+
+
+    /* Footer Adjustments */
+    .footer {
+        padding: 4rem 1.5em; /* Reduced padding */
+        min-height: auto; /* Height fits content */
+        height: auto;
+    }
+    .footer-header {
+         margin-bottom: 3rem; /* Reduced margin */
+    }
+    .footer-header h2 {
+        font-size: 7vw; /* Larger font on very small screens */
+    }
+    .footer-grid {
+        grid-template-columns: 1fr; /* Single column layout */
+        gap: 2.5rem; /* Adjusted gap */
+        margin-bottom: 4rem; /* Reduced margin */
+    }
+     .footer-column {
+        gap: 2.5rem; /* Reduced gap within columns */
+     }
+    .footer-section h3 {
+         font-size: 1.2rem; /* Reduced font size */
+         margin-bottom: 0.8rem; /* Reduced margin */
+    }
+    .footer-section p {
+        font-size: 1rem; /* Reduced font size */
+        margin-bottom: 0.4rem; /* Reduced margin */
+    }
+    .footer-large-text {
+        font-size: 15vw; /* Even larger font on very small screens */
+    }
+}
+
+/* -------------------- TEAM SECTION MOBILE RESPONSIVE -------------------- */
+
+@media (max-width: 900px) {
+    section.team {
+        padding: 2em 1em;
+        gap: 2em;
+    }
+
+    .profile-images {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        max-width: 100%;
+    }
+
+    .img {
+        width: 100px;
+        height: 100px;
+        flex: 0 0 auto;
+        padding: 6px;
+    }
+
+    .img.active {
+        outline: 3px solid #b62323;
+        outline-offset: 4px;
+        border-radius: 0.75rem;
+    }
+
+    .profile-names {
+        height: auto;
+        min-height: 5rem;
+        margin-top: 1em;
+    }
+
+    .name h1 {
+        font-size: 2.5rem;
+        text-align: center;
+        position: static;
+        transform: none;
+        color: #1a1a1a;
+        line-height: 1.1;
+    }
+
+    .name.default h1 {
+        color: #b62323;
+    }
+}
+
+/* -------------------- GENERAL MOBILE RESPONSIVE FIXES -------------------- */
+
+@media (max-width: 768px) {
+    nav {
+        width: 100%;
+        transform: none;
+        padding: 1em;
+    }
+
+    .menu-container {
+        width: 100%;
+        left: -100%;
+    }
+
+    .menu-container.is-open {
+        left: 0;
+    }
+
+    .menu-item-link a {
+        font-size: 32px;
+    }
+
+    .menu-item span {
+        font-size: 12px;
+    }
+
+    .video-container-desktop {
+        display: none !important;
+    }
+
+    .video-container-mobile {
+        display: block !important;
+    }
+
+    .video-container-mobile .video-title p {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .cards {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-left: 1em;
+        width: 100vw;
+        height: auto;
+    }
+
+    .card {
+        width: 80vw;
+        min-width: 300px;
+        height: auto;
+        flex-shrink: 0;
+    }
+}
+@media (max-width: 900px) {
+    .work .cards {
+        flex-direction: column;
+        width: 100%;
+        padding-left: 0;
+        gap: 1.5rem;
+    }
+
+    .card {
+        width: 90%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .reviews .review-cards-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2em 1em;
+        transform: none !important;
+    }
+
+    canvas.outline-layer,
+    canvas.fill-layer {
+        display: none !important;
+    }
+}
